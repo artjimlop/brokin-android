@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainTabbedActivity$PlaceholderFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/user_stocks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+    <TextView android:id="@+id/stocks_buyed_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/no_user_stocks"
+        android:textColor="@color/gray_50"
+        android:textSize="20sp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

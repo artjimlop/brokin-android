@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:id="@+id/stock_picture"
+            android:layout_width="112dp"
+            android:layout_height="84dp"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:background="#660000cc"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView android:id="@+id/stock_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32dp"
+                android:textColor="#FFFFFF"
+                tools:text="STK" />
+
+            <TextView android:id="@+id/stock_number_of_stocks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:singleLine="true"
+                tools:text="2000 stocks" />
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_toLeftOf="@+id/stock_watchers"
+            android:layout_toRightOf="@+id/stock_picture"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+
+            <TextView android:id="@+id/stock_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:singleLine="true"
+                android:maxLines="2"
+                android:textColor="#ff022c4d"
+                android:textSize="14sp"
+                tools:text="Titulo Dos líneas" />
+
+            <TextView android:id="@+id/stock_percent_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:textColor="#808080"
+                tools:text="Porcentaje de cambio" />
+
+            <TextView android:id="@+id/stock_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#808080"
+                android:singleLine="true"
+                tools:text="valor actual" />
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/stock_watchers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="6dp"
+            tools:text="2"
+            />
+
+        <ImageView android:id="@+id/stock_buy"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_sell"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</FrameLayout>
