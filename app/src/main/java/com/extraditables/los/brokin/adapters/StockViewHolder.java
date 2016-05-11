@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.extraditables.los.brokin.MainTabbedActivity;
+import com.extraditables.los.brokin.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.adapters.listeners.OnStockClickListener;
 import com.extraditables.los.brokin.db.DatabaseHelper;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 
 public class StockViewHolder extends RecyclerView.ViewHolder {
 
@@ -44,15 +44,15 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
     private final OnStockClickListener onStockClickListener;
     private final String LOG_TAG = getClass().getSimpleName();
 
-    @InjectView(R.id.stock_picture)
+    @Bind(R.id.stock_picture)
     View picture;
-    @InjectView(R.id.stock_title)
+    @Bind(R.id.stock_title)
     TextView title;
-    @InjectView(R.id.stock_author) TextView author;
-    @InjectView(R.id.stock_watchers) TextView watchers;
-    @InjectView(R.id.stock_value) TextView value;
-    @InjectView(R.id.stock_percent_change) TextView percent;
-    @InjectView(R.id.stock_buy)
+    @Bind(R.id.stock_author) TextView author;
+    @Bind(R.id.stock_watchers) TextView watchers;
+    @Bind(R.id.stock_value) TextView value;
+    @Bind(R.id.stock_percent_change) TextView percent;
+    @Bind(R.id.stock_buy)
     ImageView buy;
     View notificationIndicator;
     Context context;
@@ -62,7 +62,7 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         this.onStockClickListener = onStockClickListener;
         this.context = context;
-        ButterKnife.inject(this, itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     public void render(final StockModel stockModel) {

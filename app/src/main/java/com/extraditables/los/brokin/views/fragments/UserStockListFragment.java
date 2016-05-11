@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.extraditables.los.brokin.MainTabbedActivity;
+import com.extraditables.los.brokin.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.adapters.UserStockAdapter;
 import com.extraditables.los.brokin.adapters.listeners.OnUserStockClickListener;

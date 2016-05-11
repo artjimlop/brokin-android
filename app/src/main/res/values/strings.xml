@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">Brokin</string>
+  <string name="app_name">Brokin</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+  <string name="title_section1">Section 1</string>
+  <string name="title_section2">Section 2</string>
+  <string name="title_section3">Section 3</string>
 
-    <string name="hello_world">Hello world!</string>
+  <string name="hello_world">Hello world!</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="no_user_stocks">No stocks buyed yet.</string>
+  <string name="action_settings">Settings</string>
+  <string name="no_user_stocks">No stocks buyed yet.</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+  <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

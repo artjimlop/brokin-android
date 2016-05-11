@@ -1,4 +1,4 @@
-package com.extraditables.los.brokin;
+package com.extraditables.los.brokin.views.activity;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.db.DatabaseHelper;
 import com.extraditables.los.brokin.models.UserModel;
 import com.extraditables.los.brokin.models.UserStockModel;
@@ -26,11 +27,8 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.Executors;
@@ -38,7 +36,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -47,9 +45,9 @@ public class MainTabbedActivity extends ActionBarActivity {
 
     private final String LOG_TAG = getClass().getSimpleName();
 
-    @InjectView(R.id.pager) ViewPager viewPager;
-    @InjectView(R.id.tab_layout) TabLayout tabLayout;
-    @InjectView(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.pager) ViewPager viewPager;
+    @Bind(R.id.tab_layout) TabLayout tabLayout;
+    @Bind(R.id.toolbar) Toolbar toolbar;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -59,7 +57,7 @@ public class MainTabbedActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tabbed);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         this.context = this;
         // Set a toolbar to replace the action bar.
         setSupportActionBar(toolbar);
