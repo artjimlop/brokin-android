@@ -1,6 +1,5 @@
 package com.extraditables.los.brokin.adapters;
 
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -9,34 +8,27 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.extraditables.los.brokin.views.activity.MainTabbedActivity;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.adapters.listeners.OnStockClickListener;
 import com.extraditables.los.brokin.db.DatabaseHelper;
 import com.extraditables.los.brokin.models.StockModel;
 import com.extraditables.los.brokin.models.UserModel;
 import com.extraditables.los.brokin.models.UserStockModel;
+import com.extraditables.los.brokin.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.views.fragments.UserStockListFragment;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.Bind;
 
 public class StockViewHolder extends RecyclerView.ViewHolder {
 
@@ -44,16 +36,10 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
     private final OnStockClickListener onStockClickListener;
     private final String LOG_TAG = getClass().getSimpleName();
 
-    @Bind(R.id.stock_picture)
-    View picture;
-    @Bind(R.id.stock_title)
-    TextView title;
     @Bind(R.id.stock_author) TextView author;
-    @Bind(R.id.stock_watchers) TextView watchers;
+    @Bind(R.id.stock_number_of_stocks) TextView name;
     @Bind(R.id.stock_value) TextView value;
     @Bind(R.id.stock_percent_change) TextView percent;
-    @Bind(R.id.stock_buy)
-    ImageView buy;
     View notificationIndicator;
     Context context;
 
@@ -67,31 +53,24 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
 
     public void render(final StockModel stockModel) {
         this.setClickListener(stockModel);
-        title.setText(stockModel.getName());
         float watchersCount = stockModel.getChangePercentage();
-        if (watchersCount > 0) {
-            watchers.setVisibility(View.VISIBLE);
-            watchers.setText(getWatchersText(watchersCount));
-        } else {
-            watchers.setVisibility(View.GONE);
-        }
         author.setText(stockModel.getSymbol());
-
+        name.setText(stockModel.getName());
         BigDecimal valueTwoDecimals = round(stockModel.getValue(),2);
 
-        value.setText("Current value: " + String.valueOf(valueTwoDecimals)+"$");
+        value.setText("$" + String.valueOf(valueTwoDecimals));
         percent.setText("Change: " + String.valueOf(stockModel.getChangePercentage()+"%"));
 
         if (stockModel.getChangePercentage() < 0) {
-            picture.setBackgroundColor(Color.parseColor("#D50000"));
+            value.setTextColor(Color.parseColor("#D50000"));
         } else if (stockModel.getChangePercentage() > 0) {
-            picture.setBackgroundColor(Color.parseColor("#00C853"));
+            value.setTextColor(Color.parseColor("#00C853"));
         } else {
-            picture.setBackgroundColor(Color.parseColor("#424242"));
+            value.setTextColor(Color.parseColor("#424242"));
         }
 
 
-        buy.setOnClickListener(new View.OnClickListener() {
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -307,19 +286,5 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
 
     private String getWatchersText(float watchers) {
         return String.valueOf(watchers);
-    }
-
-    private void setNotificationIconVisibility(boolean visible) {
-        notificationIndicator.setVisibility(visible? View.VISIBLE : View.GONE);
-    }
-
-    private void setHighlightColorVisibility(boolean showHighlight) {
-        if (showHighlight) {
-            CharSequence text = title.getText();
-            SpannableStringBuilder sp = new SpannableStringBuilder(text);
-            int selectedColor = itemView.getContext().getResources().getColor(R.color.abc_background_cache_hint_selector_material_dark);
-            sp.setSpan(new ForegroundColorSpan(selectedColor), 0, text.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            title.setText(sp);
-        }
     }
 }

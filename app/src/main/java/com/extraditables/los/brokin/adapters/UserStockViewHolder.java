@@ -34,17 +34,10 @@ public class UserStockViewHolder extends RecyclerView.ViewHolder {
     private final OnUserStockClickListener onUserStockClickListener;
     private final String LOG_TAG = getClass().getSimpleName();
 
-    @Bind(R.id.stock_picture)
-    View picture;
-    @Bind(R.id.stock_title)
-    TextView title;
     @Bind(R.id.stock_author) TextView author;
-    @Bind(R.id.stock_watchers) TextView watchers;
     @Bind(R.id.stock_value) TextView value;
     @Bind(R.id.stock_percent_change) TextView percent;
     @Bind(R.id.stock_number_of_stocks) TextView numberOfStocks;
-    @Bind(R.id.stock_buy)
-    ImageView buy;
     View notificationIndicator;
     Context context;
 
@@ -58,14 +51,6 @@ public class UserStockViewHolder extends RecyclerView.ViewHolder {
 
     public void render(final UserStockModel userStockModel) {
         this.setClickListener(userStockModel);
-        title.setText(userStockModel.getName());
-        float watchersCount = userStockModel.getCurrentValue();
-        if (watchersCount > 0) {
-            watchers.setVisibility(View.VISIBLE);
-            watchers.setText(getWatchersText(watchersCount));
-        } else {
-            watchers.setVisibility(View.GONE);
-        }
         Float earns = userStockModel.getCurrentValue()* userStockModel.getNumberOfStocks() - userStockModel.getValue()* userStockModel.getNumberOfStocks();
         BigDecimal earnsTwoDigits;
         BigDecimal currentValueTwiDigits;
@@ -73,20 +58,20 @@ public class UserStockViewHolder extends RecyclerView.ViewHolder {
         earnsTwoDigits= round(earns,2);
 
         author.setText(userStockModel.getSymbol());
-        value.setText("Current value: " + String.valueOf(currentValueTwiDigits)+"$");
-        percent.setText("Earned: " + String.valueOf(earnsTwoDigits)+"$");
-        numberOfStocks.setText(String.valueOf(userStockModel.getNumberOfStocks())+" stocks");
+        value.setText("$" + String.valueOf(currentValueTwiDigits));
+        percent.setText("Earned: $" + String.valueOf(earnsTwoDigits));
+        numberOfStocks.setText(String.valueOf(userStockModel.getNumberOfStocks())+" shares");
         //TODO Logica de pérdida o ganancia (deberia mostrar current value y la perdida o ganancia)
         if (earns < 0) {
-            picture.setBackgroundColor(Color.parseColor("#D50000"));
+            value.setTextColor(Color.parseColor("#D50000"));
         } else if (earns > 0) {
-            picture.setBackgroundColor(Color.parseColor("#00C853"));
+            value.setTextColor(Color.parseColor("#00C853"));
         } else {
-            picture.setBackgroundColor(Color.parseColor("#424242"));
+            value.setTextColor(Color.parseColor("#424242"));
         }
 
 
-        buy.setOnClickListener(new View.OnClickListener() {
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 sellStocksAdapter(v, userStockModel);
@@ -196,10 +181,6 @@ public class UserStockViewHolder extends RecyclerView.ViewHolder {
                 onUserStockClickListener.onUserStockClick(userStockModel);
             }
         });
-    }
-
-    private String getWatchersText(float watchers) {
-        return String.valueOf(watchers);
     }
 
 }

@@ -15,73 +15,58 @@
 
         <LinearLayout android:id="@+id/stock_picture"
             android:layout_width="112dp"
-            android:layout_height="84dp"
-            android:layout_marginRight="16dp"
-            android:scaleType="centerCrop"
-            android:background="#660000cc"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical"
-            android:gravity="center">
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            >
 
             <TextView android:id="@+id/stock_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="32dp"
-                android:textColor="#FFFFFF"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 tools:text="STK" />
+
+            <TextView android:id="@+id/stock_number_of_stocks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#808080"
+                android:singleLine="true"
+                tools:text="2000 shares" />
 
         </LinearLayout>
 
         <LinearLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_toLeftOf="@+id/stock_watchers"
-            android:layout_toRightOf="@+id/stock_picture"
             android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:id="@+id/linearLayout">
-
-            <TextView android:id="@+id/stock_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:ellipsize="end"
-                android:fontFamily="sans-serif-medium"
-                android:singleLine="true"
-                android:maxLines="2"
-                android:textColor="#ff022c4d"
-                android:textSize="14sp"
-                tools:text="Titulo Dos líneas" />
 
             <TextView android:id="@+id/stock_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:textColor="#808080"
+                android:textSize="18dp"
+                android:layout_gravity="center"
                 android:singleLine="true"
-                tools:text="valor actual" />
+                tools:text="$100.00" />
 
             <TextView android:id="@+id/stock_percent_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
+                android:textSize="12dp"
                 android:textColor="#808080"
-                tools:text="Porcentaje de cambio" />
+                tools:text="Earned: $10000" />
 
         </LinearLayout>
-
-        <TextView android:id="@+id/stock_watchers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="6dp"
-            tools:text="2"
-            />
-
-        <ImageView android:id="@+id/stock_buy"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_action_add_shopping_cart"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 </FrameLayout>

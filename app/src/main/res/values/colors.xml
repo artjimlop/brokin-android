@@ -2,8 +2,8 @@
 <resources>
     <color name="dark_shadow">#33000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#00C853</color>
-    <color name="primary_dark">#1B5E20</color>
-    <color name="primary_indicated">#2E7D32</color>
+    <color name="primary">#21CE99</color>
+    <color name="primary_dark">#00796B</color>
+    <color name="primary_indicated">#009688</color>
     <color name="gray_50">#808080</color>
 </resources>
