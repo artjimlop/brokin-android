@@ -16,9 +16,9 @@
 package com.extraditables.los.brokin;
 
 import android.app.Application;
-import com.extraditables.los.brokin.injector.component.ApplicationComponent;
-import com.extraditables.los.brokin.injector.component.DaggerApplicationComponent;
-import com.extraditables.los.brokin.injector.module.ApplicationModule;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.ApplicationComponent;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.DaggerApplicationComponent;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ApplicationModule;
 
 public class AndroidApplication extends Application {
 
