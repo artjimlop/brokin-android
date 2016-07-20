@@ -41,4 +41,5 @@ dependencies {
   apt "com.google.dagger:dagger-compiler:${libs.dagger}"
   provided "org.glassfish:javax.annotation:${libs.javax_annotation}"
   compile "com.google.dagger:dagger:${libs.dagger}"
+  compile 'com.robinhood.spark:spark:1.1.2'
 }

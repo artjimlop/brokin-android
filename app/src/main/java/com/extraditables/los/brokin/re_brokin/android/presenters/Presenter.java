@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module;
+package com.extraditables.los.brokin.re_brokin.android.presenters;
 
-import dagger.Module;
+public interface Presenter {
+    void resume();
 
-@Module
-public class StockModule {
+    void pause();
 
+    void destroy();
 }

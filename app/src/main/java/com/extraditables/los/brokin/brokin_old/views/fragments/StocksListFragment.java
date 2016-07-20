@@ -1,6 +1,7 @@
 package com.extraditables.los.brokin.brokin_old.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -13,18 +14,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.brokin_old.adapters.StockAdapter;
 import com.extraditables.los.brokin.brokin_old.adapters.listeners.OnStockClickListener;
 import com.extraditables.los.brokin.brokin_old.models.StockModel;
-
+import com.extraditables.los.brokin.re_brokin.android.view.activities.ShareInfoActivity;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -85,7 +84,8 @@ public class StocksListFragment extends Fragment {
                         mAdapter = new StockAdapter(new OnStockClickListener() {
                             @Override
                             public void onStockClick(StockModel event) {
-                                // TODO stuff
+                              Intent intent = new Intent(getActivity(), ShareInfoActivity.class);
+                              startActivity(intent);
                             }
                         }, stocks, getActivity());
                         mRecyclerView.setAdapter(mAdapter);

@@ -2,6 +2,7 @@ package com.extraditables.los.brokin.brokin_old.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
@@ -23,6 +24,7 @@ import com.extraditables.los.brokin.brokin_old.models.UserModel;
 import com.extraditables.los.brokin.brokin_old.models.UserStockModel;
 import com.extraditables.los.brokin.brokin_old.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.brokin_old.views.fragments.UserStockListFragment;
+import com.extraditables.los.brokin.re_brokin.android.view.activities.ShareInfoActivity;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import java.math.BigDecimal;
@@ -77,7 +79,10 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
                 if (prefs.getString(USER_USERNAME, null) == null) {
                     createUserAdapter(v);
                 } else {
-                    buyStocksAdapter(v, stockModel);
+                    Intent callingIntent =
+                        ShareInfoActivity.getCallingIntent(context, stockModel.getSymbol());
+                    context.startActivity(callingIntent);
+                    //TODO buyStocksAdapter(v, stockModel);
                 }
             }
         });

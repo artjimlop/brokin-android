@@ -18,7 +18,11 @@ package com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.m
 import android.content.Context;
 import com.extraditables.los.brokin.AndroidApplication;
 import com.extraditables.los.brokin.UIThread;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.ServiceStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.StockRepository;
+import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.JobExecutor;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.PostExecutionThread;
+import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.ThreadExecutor;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -39,8 +43,17 @@ public class ApplicationModule {
     }
 
     @Provides
+    @Singleton ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
+        return jobExecutor;
+    }
+
+    @Provides
     @Singleton PostExecutionThread providePostExecutionThread(UIThread uiThread) {
         return uiThread;
     }
 
+    @Provides
+    @Singleton StockRepository provideStockRepository(ServiceStockRepository serviceStockRepository) {
+        return serviceStockRepository;
+    }
 }
