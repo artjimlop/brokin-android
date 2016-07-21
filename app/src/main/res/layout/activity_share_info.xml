@@ -1,31 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.extraditables.los.brokin.re_brokin.android.view.activities.ShareInfoActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     >
 
-  <android.support.v7.widget.CardView
-      android:id="@+id/share_graphics"
+  <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:minHeight="?attr/actionBarSize"
+      android:background="@color/primary"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:scrollbars="vertical"
+      android:layout_height="wrap_content"
+      app:layout_collapseMode="pin"/>
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="fill_parent"
       >
 
-    <com.robinhood.spark.SparkView
-        android:id="@+id/share_graphics_spark"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:spark_lineColor="@color/cardview_dark_background"
-        />
+    <android.support.v7.widget.CardView
+        android:id="@+id/share_graphics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:scrollbars="vertical"
+        style="@style/CardViewStyle"
+        >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@color/white"
+          >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:paddingTop="16dp"
+          android:paddingBottom="32dp"
+          >
+        <TextView android:id="@+id/share_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/spark_line_color"
+            android:textSize="28sp"
+            tools:text="$121.73"
+            android:text="$121.73"
+            />
 
-  </android.support.v7.widget.CardView>
+        <TextView android:id="@+id/share_earns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/spark_line_color"
+            tools:text="+$1.10 (+0.92%) Today"
+            android:text="+$1.10 (+0.92%) Today"
+            />
+      </LinearLayout>
 
-</RelativeLayout>
+        <com.robinhood.spark.SparkView
+            android:id="@+id/share_graphics_spark"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@color/white"
+            app:spark_lineColor="@color/primary"
+            />
+
+      </LinearLayout>
+    </android.support.v7.widget.CardView>
+  </FrameLayout>
+</LinearLayout>

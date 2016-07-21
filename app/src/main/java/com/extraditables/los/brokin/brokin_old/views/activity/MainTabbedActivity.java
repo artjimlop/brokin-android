@@ -47,7 +47,7 @@ public class MainTabbedActivity extends ActionBarActivity {
 
     @Bind(R.id.pager) ViewPager viewPager;
     @Bind(R.id.tab_layout) TabLayout tabLayout;
-    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.toolbar_main) Toolbar toolbar;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;

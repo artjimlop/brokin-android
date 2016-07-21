@@ -20,6 +20,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.extraditables.los.brokin.AndroidApplication;
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.ApplicationComponent;
@@ -32,15 +33,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initializeInjector(getApplicationComponent());
     }
 
-    protected void setUpToolbar(boolean showUpButton) {
+    protected void setUpToolbar(boolean showUpButton, String title) {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             if (getSupportActionBar() != null) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(showUpButton);
+                getSupportActionBar().setTitle(title);
             }
         }
     }
