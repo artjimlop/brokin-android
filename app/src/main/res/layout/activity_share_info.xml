@@ -17,8 +17,7 @@
 
   <FrameLayout
       android:layout_width="match_parent"
-      android:layout_height="fill_parent"
-      >
+      android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:id="@+id/share_graphics"
@@ -43,21 +42,19 @@
           android:paddingTop="16dp"
           android:paddingBottom="32dp"
           >
-        <TextView android:id="@+id/share_price"
+        <TextView android:id="@+id/share_quote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/spark_line_color"
             android:textSize="28sp"
             tools:text="$121.73"
-            android:text="$121.73"
             />
 
-        <TextView android:id="@+id/share_earns"
+        <TextView android:id="@+id/share_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/spark_line_color"
             tools:text="+$1.10 (+0.92%) Today"
-            android:text="+$1.10 (+0.92%) Today"
             />
       </LinearLayout>
 
@@ -76,4 +73,27 @@
       </LinearLayout>
     </android.support.v7.widget.CardView>
   </FrameLayout>
+
+  <TextView android:id="@+id/button_buy_shares"
+      style="@style/BuyButton"
+      android:layout_width="match_parent"
+      android:layout_height="42dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_marginTop="16dp"
+      android:text="@string/share_info_buy"
+      android:visibility="gone"
+      tools:visibility="visible"/>
+
+  <TextView android:id="@+id/button_sell_shares"
+      style="@style/BuyButton"
+      android:layout_width="match_parent"
+      android:layout_height="42dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_marginTop="16dp"
+      android:text="@string/share_info_sell"
+      android:visibility="gone"
+      tools:visibility="visible"/>
+
 </LinearLayout>

@@ -80,7 +80,7 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
                     createUserAdapter(v);
                 } else {
                     Intent callingIntent =
-                        ShareInfoActivity.getCallingIntent(context, stockModel.getSymbol());
+                        ShareInfoActivity.getCallingIntent(context, stockModel.getSymbol(), false);
                     context.startActivity(callingIntent);
                     //TODO buyStocksAdapter(v, stockModel);
                 }
