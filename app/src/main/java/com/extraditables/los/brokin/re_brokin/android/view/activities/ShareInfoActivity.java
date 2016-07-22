@@ -35,11 +35,21 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
 
   private static final String EXTRA_SYMBOL = "symbol";
   private static final String EXTRA_SELL = "sell";
+  private static final String EXTRA_USER_STOCK_ID = "user_stock_id";
 
   public static Intent getCallingIntent(Context context, String symbol, Boolean sell) {
     Intent intent = new Intent(context, ShareInfoActivity.class);
     intent.putExtra(EXTRA_SYMBOL, symbol);
     intent.putExtra(EXTRA_SELL, sell);
+    return intent;
+  }
+
+  public static Intent getCallingIntent(Context context, String symbol, Integer userStockId,
+      Boolean sell) {
+    Intent intent = new Intent(context, ShareInfoActivity.class);
+    intent.putExtra(EXTRA_SYMBOL, symbol);
+    intent.putExtra(EXTRA_SELL, sell);
+    intent.putExtra(EXTRA_USER_STOCK_ID, userStockId);
     return intent;
   }
 
@@ -49,16 +59,17 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
     ButterKnife.bind(this);
     String symbol = getIntent().getStringExtra(EXTRA_SYMBOL);
     Boolean sell = getIntent().getBooleanExtra(EXTRA_SELL, false);
+    Integer userStockId = getIntent().getIntExtra(EXTRA_USER_STOCK_ID, 0);
     initializeViews(symbol);
-    initializePresenter(symbol, sell);
+    initializePresenter(symbol, userStockId, sell);
   }
 
   private void initializeViews(String symbol) {
     setUpToolbar(true, symbol);
   }
 
-  private void initializePresenter(String symbol, Boolean sell) {
-    presenter.initialize(this, symbol, sell);
+  private void initializePresenter(String symbol, Integer userStockId, Boolean sell) {
+    presenter.initialize(this, symbol, userStockId, sell);
   }
 
   @Override protected void initializeInjector(ApplicationComponent applicationComponent) {
@@ -114,5 +125,20 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
         .setNegativeButton(R.string.alert_buy_cancel, null)
         .create()
         .show();
+  }
+
+  @OnClick(R.id.button_sell_shares) public void onSellClick() {
+    sellStocksAdapter();
+  }
+
+  private void sellStocksAdapter() {
+    android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+    builder.setMessage(getString(R.string.share_info_sell_description))
+        .setPositiveButton(getString(R.string.share_info_sell_ok), new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int id) {
+            presenter.sell();
+          }
+        })
+        .setNegativeButton(getString(R.string.share_info_sell_cancel), null).create().show();
   }
 }

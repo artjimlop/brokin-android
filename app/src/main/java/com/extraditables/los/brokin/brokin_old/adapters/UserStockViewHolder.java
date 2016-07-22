@@ -2,30 +2,29 @@ package com.extraditables.los.brokin.brokin_old.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import com.extraditables.los.brokin.brokin_old.views.activity.MainTabbedActivity;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.brokin_old.adapters.listeners.OnUserStockClickListener;
 import com.extraditables.los.brokin.brokin_old.db.DatabaseHelper;
 import com.extraditables.los.brokin.brokin_old.models.UserModel;
 import com.extraditables.los.brokin.brokin_old.models.UserStockModel;
+import com.extraditables.los.brokin.brokin_old.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.brokin_old.views.fragments.UserStockListFragment;
+import com.extraditables.los.brokin.re_brokin.android.view.activities.ShareInfoActivity;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.Bind;
 
 public class UserStockViewHolder extends RecyclerView.ViewHolder {
 
@@ -73,7 +72,9 @@ public class UserStockViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                sellStocksAdapter(v, userStockModel);
+                Intent callingIntent =
+                    ShareInfoActivity.getCallingIntent(context, userStockModel.getSymbol(), userStockModel.getUserStockId(), true);
+                context.startActivity(callingIntent);
             }
         });
 

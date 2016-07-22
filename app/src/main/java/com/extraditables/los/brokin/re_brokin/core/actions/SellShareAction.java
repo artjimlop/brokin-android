@@ -14,9 +14,8 @@ public class SellShareAction implements Action {
   private final PostExecutionThread postExecutionThread;
   private final UserRepository userRepository;
   private final LocalStockRepository localStockRepository;
-  private UserStockModel stock;
   private Callback<Void> callback;
-  private Integer numberOfStocks;
+  private Integer stockId;
 
   @Inject public SellShareAction(ThreadExecutor threadExecutor,
       PostExecutionThread postExecutionThread, UserRepository userRepository,
@@ -27,30 +26,32 @@ public class SellShareAction implements Action {
     this.localStockRepository = localStockRepository;
   }
 
-  public void sell(UserStockModel stock, Integer numberOfStocks, Callback<Void> callback) {
-    this.stock = stock;
-    this.numberOfStocks = numberOfStocks;
+  public void sell(Integer stockId, Callback<Void> callback) {
+    this.stockId = stockId;
     this.callback = callback;
     threadExecutor.execute(this);
   }
 
   @Override public void run() {
+    UserStockModel userStock = localStockRepository.getStock(stockId);
     UserModel userModel = getUserInfoFromDB();
-    float price = stock.getCurrentValue();
-    Float cash = price * numberOfStocks;
+    float price = userStock.getCurrentValue();
+    Float cash = price * userStock.getNumberOfStocks();
 
     userModel.setCash(userModel.getCash() + cash);
 
-    removeStockFromDB();
+    removeStockFromDB(userStock);
     updateUserInfoInDB(userModel);
+
+    notifySuccess();
   }
 
   private void updateUserInfoInDB(UserModel userModel) {
     userRepository.putUser(userModel);
   }
 
-  private void removeStockFromDB() {
-    localStockRepository.remove(stock);
+  private void removeStockFromDB(UserStockModel userStock) {
+    localStockRepository.remove(userStock);
   }
 
   private UserModel getUserInfoFromDB() {
@@ -65,11 +66,4 @@ public class SellShareAction implements Action {
     });
   }
 
-  private void notifyError() {
-    this.postExecutionThread.post(new Runnable() {
-      @Override public void run() {
-        callback.onError();
-      }
-    });
-  }
 }

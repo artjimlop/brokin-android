@@ -39,4 +39,14 @@ public class DatabaseStockRepository implements LocalStockRepository {
     }
     OpenHelperManager.releaseHelper();
   }
+
+  @Override public UserStockModel getStock(Integer id) {
+    try {
+      Dao dao = databaseHelper.getUserStockModelDao();
+      return (UserStockModel) dao.queryForId(id);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }

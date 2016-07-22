@@ -6,4 +6,6 @@ public interface LocalStockRepository {
   void setStock(UserStockModel userStockModel);
 
   void remove(UserStockModel stock);
+
+  UserStockModel getStock(Integer id);
 }

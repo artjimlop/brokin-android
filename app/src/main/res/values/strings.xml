@@ -18,4 +18,7 @@
   <string name="alert_buy_title">How much are you investing?</string>
   <string name="alert_buy_ok">Buy</string>
   <string name="alert_buy_cancel">Cancel</string>
+  <string name="share_info_sell_description">Are you sure you want to sell?</string>
+  <string name="share_info_sell_ok">Sell</string>
+  <string name="share_info_sell_cancel">Cancel</string>
 </resources>

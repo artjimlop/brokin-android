@@ -5,6 +5,7 @@ import com.extraditables.los.brokin.re_brokin.android.view.ShareInfoView;
 import com.extraditables.los.brokin.re_brokin.core.actions.Action;
 import com.extraditables.los.brokin.re_brokin.core.actions.BuyShareAction;
 import com.extraditables.los.brokin.re_brokin.core.actions.GetShareHistoryAction;
+import com.extraditables.los.brokin.re_brokin.core.actions.SellShareAction;
 import java.io.IOException;
 import java.math.BigDecimal;
 import javax.inject.Inject;
@@ -18,19 +19,24 @@ public class ShareInfoPresenter implements Presenter {
 
   private final GetShareHistoryAction getShareHistoryAction;
   private final BuyShareAction buyShareAction;
+  private final SellShareAction sellShareAction;
   private ShareInfoView shareInfoView;
   private String symbol;
   private Stock share;
+  private Integer userStockId;
 
   @Inject public ShareInfoPresenter(GetShareHistoryAction getShareHistoryAction,
-      BuyShareAction buyShareAction) {
+      BuyShareAction buyShareAction, SellShareAction sellShareAction) {
     this.getShareHistoryAction = getShareHistoryAction;
     this.buyShareAction = buyShareAction;
+    this.sellShareAction = sellShareAction;
   }
 
-  public void initialize(final ShareInfoView shareInfoView, String symbol, Boolean sell) {
+  public void initialize(final ShareInfoView shareInfoView, String symbol, Integer userStockId,
+      Boolean sell) {
     this.shareInfoView = shareInfoView;
     this.symbol = symbol;
+    this.userStockId = userStockId;
     setupSharesOption(sell);
     getShareHistoryAction.getHistory(symbol, new Action.Callback<Observable<Stock>>() {
       @Override public void onLoaded(Observable<Stock> observable) {
@@ -111,6 +117,22 @@ public class ShareInfoPresenter implements Presenter {
 
       @Override public void onComplete() {
         Log.d("COMPRADA!", "yatusae");
+      }
+
+      @Override public void onError() {
+        //TODO implement an error bundle
+      }
+    });
+  }
+
+  public void sell() {
+    sellShareAction.sell(userStockId, new Action.Callback<Void>() {
+      @Override public void onLoaded(Void aVoid) {
+
+      }
+
+      @Override public void onComplete() {
+        Log.d("Vendida!", "yatusae");
       }
 
       @Override public void onError() {
