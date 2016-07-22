@@ -16,7 +16,9 @@
 package com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component;
 
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ApplicationModule;
-import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.StockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.LocalStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.RemoteStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.user.UserRepository;
 import com.extraditables.los.brokin.re_brokin.android.view.activities.BaseActivity;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.PostExecutionThread;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.ThreadExecutor;
@@ -33,5 +35,9 @@ public interface ApplicationComponent {
 
     PostExecutionThread getPostExecutionThread();
 
-    StockRepository getStockRepository();
+    RemoteStockRepository getStockRepository();
+
+    LocalStockRepository getLocalStockRepository();
+
+    UserRepository getLocalDatabaseUserRepository();
 }

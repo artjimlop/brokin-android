@@ -1,7 +1,9 @@
 package com.extraditables.los.brokin.re_brokin.android.presenters;
 
+import android.util.Log;
 import com.extraditables.los.brokin.re_brokin.android.view.ShareInfoView;
 import com.extraditables.los.brokin.re_brokin.core.actions.Action;
+import com.extraditables.los.brokin.re_brokin.core.actions.BuyShareAction;
 import com.extraditables.los.brokin.re_brokin.core.actions.GetShareHistoryAction;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -15,11 +17,15 @@ import yahoofinance.Stock;
 public class ShareInfoPresenter implements Presenter {
 
   private final GetShareHistoryAction getShareHistoryAction;
+  private final BuyShareAction buyShareAction;
   private ShareInfoView shareInfoView;
   private String symbol;
+  private Stock share;
 
-  @Inject public ShareInfoPresenter(GetShareHistoryAction getShareHistoryAction) {
+  @Inject public ShareInfoPresenter(GetShareHistoryAction getShareHistoryAction,
+      BuyShareAction buyShareAction) {
     this.getShareHistoryAction = getShareHistoryAction;
+    this.buyShareAction = buyShareAction;
   }
 
   public void initialize(final ShareInfoView shareInfoView, String symbol, Boolean sell) {
@@ -40,16 +46,37 @@ public class ShareInfoPresenter implements Presenter {
               }
 
               @Override public void onNext(Stock stock) {
-                BigDecimal quote = round(stock.getQuote().getPrice(),2);
-                shareInfoView.setQuote(quote);
-                BigDecimal chageInPercent = round(stock.getQuote().getChangeInPercent(),2);
-                BigDecimal change = stock.getQuote().getChange();
-                shareInfoView.setChange(change, chageInPercent);
+                setShare(stock);
+                setupQuote(stock, shareInfoView);
+                setupChange(stock, shareInfoView);
                 setupGraphicsData(stock, shareInfoView);
               }
             });
       }
+
+      @Override public void onComplete() {
+
+      }
+
+      @Override public void onError() {
+
+      }
     });
+  }
+
+  private void setShare(Stock stock) {
+    share = stock;
+  }
+
+  private void setupChange(Stock stock, ShareInfoView shareInfoView) {
+    BigDecimal chageInPercent = round(stock.getQuote().getChangeInPercent(),2);
+    BigDecimal change = stock.getQuote().getChange();
+    shareInfoView.setChange(change, chageInPercent);
+  }
+
+  private void setupQuote(Stock stock, ShareInfoView shareInfoView) {
+    BigDecimal quote = round(stock.getQuote().getPrice(),2);
+    shareInfoView.setQuote(quote);
   }
 
   private BigDecimal round(BigDecimal d, int decimalPlace) {
@@ -77,7 +104,19 @@ public class ShareInfoPresenter implements Presenter {
   }
 
   public void buy(Long sharesToBuy) {
+    buyShareAction.buy(share, sharesToBuy, new Action.Callback<Void>() {
+      @Override public void onLoaded(Void aVoid) {
 
+      }
+
+      @Override public void onComplete() {
+        Log.d("COMPRADA!", "yatusae");
+      }
+
+      @Override public void onError() {
+        //TODO implement an error bundle
+      }
+    });
   }
 
   @Override public void resume() {

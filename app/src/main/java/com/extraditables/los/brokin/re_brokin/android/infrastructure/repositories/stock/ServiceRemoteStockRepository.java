@@ -1,4 +1,4 @@
-package com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories;
+package com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock;
 
 import java.io.IOException;
 import javax.inject.Inject;
@@ -7,9 +7,9 @@ import rx.Subscriber;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
-public class ServiceStockRepository implements StockRepository {
+public class ServiceRemoteStockRepository implements RemoteStockRepository {
 
-  @Inject public ServiceStockRepository() {
+  @Inject public ServiceRemoteStockRepository() {
   }
 
   @Override public Observable<Stock> getHistory(final String symbol) {

@@ -18,42 +18,57 @@ package com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.m
 import android.content.Context;
 import com.extraditables.los.brokin.AndroidApplication;
 import com.extraditables.los.brokin.UIThread;
-import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.ServiceStockRepository;
-import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.StockRepository;
+import com.extraditables.los.brokin.brokin_old.db.DatabaseHelper;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.DatabaseStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.LocalStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.RemoteStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.ServiceRemoteStockRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.user.DatabaseUserRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.user.UserRepository;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.JobExecutor;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.PostExecutionThread;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.ThreadExecutor;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 
-@Module
-public class ApplicationModule {
+@Module public class ApplicationModule {
 
-    private final AndroidApplication application;
+  private final AndroidApplication application;
 
-    public ApplicationModule(AndroidApplication application) {
-        this.application = application;
-    }
+  public ApplicationModule(AndroidApplication application) {
+    this.application = application;
+  }
 
-    @Provides
-    @Singleton
-    Context provideContext() {
-        return application;
-    }
+  @Provides @Singleton Context provideContext() {
+    return application;
+  }
 
-    @Provides
-    @Singleton ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
-        return jobExecutor;
-    }
+  @Provides @Singleton ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
+    return jobExecutor;
+  }
 
-    @Provides
-    @Singleton PostExecutionThread providePostExecutionThread(UIThread uiThread) {
-        return uiThread;
-    }
+  @Provides @Singleton PostExecutionThread providePostExecutionThread(UIThread uiThread) {
+    return uiThread;
+  }
 
-    @Provides
-    @Singleton StockRepository provideStockRepository(ServiceStockRepository serviceStockRepository) {
-        return serviceStockRepository;
-    }
+  @Provides @Singleton RemoteStockRepository provideRemoteStockRepository(
+      ServiceRemoteStockRepository serviceStockRepository) {
+    return serviceStockRepository;
+  }
+
+  @Provides DatabaseHelper provideDatabaseHelper() {
+    return OpenHelperManager.getHelper(application, DatabaseHelper.class);
+  }
+
+  @Provides @Singleton LocalStockRepository provideLocalStockRepository(
+      DatabaseStockRepository databaseStockRepository) {
+    return databaseStockRepository;
+  }
+
+  @Provides @Singleton UserRepository provideUserRepository(
+      DatabaseUserRepository databaseUserRepository) {
+    return databaseUserRepository;
+  }
 }

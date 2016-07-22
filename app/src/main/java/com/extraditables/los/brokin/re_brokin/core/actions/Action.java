@@ -10,6 +10,8 @@ public interface Action extends Runnable {
 
   interface Callback<Result> {
     void onLoaded(Result result);
+    void onComplete();
+    void onError();
   }
 
 }
