@@ -32,6 +32,9 @@
         android:theme="@android:style/Theme.Translucent"/>
     <activity android:name=".re_brokin.android.view.activities.ShareInfoActivity">
     </activity>
-  </application>
+      <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="368f540dcf584f079a8ae95bac579a4909e93205" />
+    </application>
 
 </manifest>

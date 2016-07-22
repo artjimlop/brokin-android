@@ -2,6 +2,7 @@ package com.extraditables.los.brokin.re_brokin.android.infrastructure.repositori
 
 import com.extraditables.los.brokin.brokin_old.db.DatabaseHelper;
 import com.extraditables.los.brokin.brokin_old.models.UserModel;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.tools.CrashReportTool;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
@@ -11,9 +12,12 @@ import javax.inject.Inject;
 public class DatabaseUserRepository implements UserRepository {
 
   private final DatabaseHelper databaseHelper;
+  private final CrashReportTool crashReportTool;
 
-  @Inject public DatabaseUserRepository(DatabaseHelper databaseHelper) {
+  @Inject public DatabaseUserRepository(DatabaseHelper databaseHelper,
+      CrashReportTool crashReportTool) {
     this.databaseHelper = databaseHelper;
+    this.crashReportTool = crashReportTool;
   }
 
   @Override public UserModel getCurrentUser() {
@@ -25,7 +29,7 @@ public class DatabaseUserRepository implements UserRepository {
       }
       OpenHelperManager.releaseHelper();
     } catch (SQLException e) {
-      //TODO something
+      crashReportTool.logException(e);
     }
     return userModel;
   }
@@ -36,7 +40,7 @@ public class DatabaseUserRepository implements UserRepository {
       dao = databaseHelper.getUserModelDao();
       dao.update(userModel);
     } catch (SQLException e) {
-      //TODO Log
+      crashReportTool.logException(e);
     }
     OpenHelperManager.releaseHelper();
   }

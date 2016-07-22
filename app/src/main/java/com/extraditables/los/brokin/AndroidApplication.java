@@ -16,22 +16,36 @@
 package com.extraditables.los.brokin;
 
 import android.app.Application;
+import com.crashlytics.android.Crashlytics;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.ApplicationComponent;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.DaggerApplicationComponent;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ApplicationModule;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.tools.CrashReportTool;
+import io.fabric.sdk.android.Fabric;
+import javax.inject.Inject;
 
 public class AndroidApplication extends Application {
 
+    @Inject CrashReportTool crashReportTool;
     private ApplicationComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initializeInjector();
+        initializeBugDetector();
+    }
+
+    private void initializeBugDetector() {
+        if (!BuildConfig.DEBUG) {
+            Fabric.with(this, new Crashlytics());
+        }
     }
 
     private void initializeInjector() {
-        component = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+        component = DaggerApplicationComponent.builder()
+            .applicationModule(new ApplicationModule(this))
+            .build();
     }
 
     public ApplicationComponent getComponent() {

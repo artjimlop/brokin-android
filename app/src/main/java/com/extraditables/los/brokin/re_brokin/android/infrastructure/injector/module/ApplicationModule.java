@@ -25,6 +25,8 @@ import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositorie
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.ServiceRemoteStockRepository;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.user.DatabaseUserRepository;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.user.UserRepository;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.tools.CrashReportTool;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.tools.CrashlyticsReportTool;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.JobExecutor;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.PostExecutionThread;
 import com.extraditables.los.brokin.re_brokin.core.infrastructure.executor.ThreadExecutor;
@@ -70,5 +72,9 @@ import javax.inject.Singleton;
   @Provides @Singleton UserRepository provideUserRepository(
       DatabaseUserRepository databaseUserRepository) {
     return databaseUserRepository;
+  }
+
+  @Provides @Singleton CrashReportTool provideCrashReportTool() {
+    return new CrashlyticsReportTool();
   }
 }
