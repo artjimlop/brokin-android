@@ -11,14 +11,14 @@
 
     <style name="BrokinTabLayout" parent="Base.Widget.Design.TabLayout">
         <item name="android:background">?attr/colorPrimary</item>
-        <item name="tabIndicatorColor">@color/primary_dark</item>
+        <item name="tabIndicatorColor">@color/white</item>
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/TabTextAppearance</item>
-        <item name="tabSelectedTextColor">@color/primary_dark</item>
+        <item name="tabSelectedTextColor">@color/white</item>
     </style>
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="android:textColor">@color/primary_indicated</item>
+        <item name="android:textColor">@color/unselected_tab_text_color</item>
     </style>
 
     <style name="CardViewStyle" parent="CardView">

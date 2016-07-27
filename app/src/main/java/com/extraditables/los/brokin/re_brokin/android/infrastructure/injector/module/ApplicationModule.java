@@ -19,6 +19,8 @@ import android.content.Context;
 import com.extraditables.los.brokin.AndroidApplication;
 import com.extraditables.los.brokin.UIThread;
 import com.extraditables.los.brokin.brokin_old.db.DatabaseHelper;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.notifications.NotificationsManager;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.notifications.NotificationsTool;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.DatabaseStockRepository;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.LocalStockRepository;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.RemoteStockRepository;
@@ -55,13 +57,13 @@ import javax.inject.Singleton;
     return uiThread;
   }
 
+  @Provides DatabaseHelper provideDatabaseHelper() {
+    return OpenHelperManager.getHelper(application, DatabaseHelper.class);
+  }
+
   @Provides @Singleton RemoteStockRepository provideRemoteStockRepository(
       ServiceRemoteStockRepository serviceStockRepository) {
     return serviceStockRepository;
-  }
-
-  @Provides DatabaseHelper provideDatabaseHelper() {
-    return OpenHelperManager.getHelper(application, DatabaseHelper.class);
   }
 
   @Provides @Singleton LocalStockRepository provideLocalStockRepository(
@@ -76,5 +78,9 @@ import javax.inject.Singleton;
 
   @Provides @Singleton CrashReportTool provideCrashReportTool() {
     return new CrashlyticsReportTool();
+  }
+
+  @Provides @Singleton NotificationsManager provideNotificationsManager() {
+    return new NotificationsTool(application);
   }
 }

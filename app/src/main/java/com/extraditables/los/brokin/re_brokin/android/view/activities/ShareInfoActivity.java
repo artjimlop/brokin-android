@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.extraditables.los.brokin.R;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.NestedListView;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.ApplicationComponent;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.DaggerStocksComponent;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ActivityModule;
@@ -21,6 +23,8 @@ import com.extraditables.los.brokin.re_brokin.android.presenters.ShareInfoPresen
 import com.extraditables.los.brokin.re_brokin.android.view.ShareInfoView;
 import com.extraditables.los.brokin.re_brokin.android.view.adapters.GraphicAdapter;
 import com.robinhood.spark.SparkView;
+import com.twitter.sdk.android.tweetui.SearchTimeline;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import java.math.BigDecimal;
 import javax.inject.Inject;
 
@@ -32,6 +36,7 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   @Bind(R.id.button_sell_shares) TextView sellButton;
   @Bind(R.id.share_quote) TextView shareQuote;
   @Bind(R.id.share_change) TextView shareChange;
+  @Bind(R.id.tweets_feed) NestedListView tweets;
 
   private static final String EXTRA_SYMBOL = "symbol";
   private static final String EXTRA_SELL = "sell";
@@ -55,13 +60,22 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_share_info);
+    setContentView(R.layout.activity_share_info_content);
     ButterKnife.bind(this);
     String symbol = getIntent().getStringExtra(EXTRA_SYMBOL);
     Boolean sell = getIntent().getBooleanExtra(EXTRA_SELL, false);
     Integer userStockId = getIntent().getIntExtra(EXTRA_USER_STOCK_ID, 0);
     initializeViews(symbol);
     initializePresenter(symbol, userStockId, sell);
+
+    final SearchTimeline timeline = new SearchTimeline.Builder()
+        .query("$"+symbol)
+        .build();
+    final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(this)
+        .setTimeline(timeline)
+        .build();
+
+    tweets.setAdapter(adapter);
   }
 
   private void initializeViews(String symbol) {
@@ -78,6 +92,16 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
         .applicationComponent(applicationComponent)
         .activityModule(new ActivityModule(this))
         .stockModule(new StockModule()).build().inject(this);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+    if (id == android.R.id.home) {
+      finish();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   @Override public void showGraphic(float[] data) {
@@ -111,6 +135,7 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   private void buyStocksAdapter() {
+
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     final EditText numberOfStocks = new EditText(this);
     numberOfStocks.setInputType(InputType.TYPE_CLASS_NUMBER);

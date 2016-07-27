@@ -1,99 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
     >
-
-  <android.support.v7.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:minHeight="?attr/actionBarSize"
-      android:background="@color/primary"
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_collapseMode="pin"/>
+      android:orientation="vertical"
+      >
 
-  <FrameLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/share_graphics"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_margin="8dp"
-        android:scrollbars="vertical"
-        style="@style/CardViewStyle"
         >
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:background="@color/white"
-          >
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:gravity="center"
-          android:paddingTop="16dp"
-          android:paddingBottom="32dp"
-          >
-        <TextView android:id="@+id/share_quote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/spark_line_color"
-            android:textSize="28sp"
-            tools:text="$121.73"
-            />
 
-        <TextView android:id="@+id/share_change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/spark_line_color"
-            tools:text="+$1.10 (+0.92%) Today"
-            />
-      </LinearLayout>
-
-        <com.robinhood.spark.SparkView
-            android:id="@+id/share_graphics_spark"
+      <android.support.v7.widget.CardView
+          android:id="@+id/share_graphics"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="8dp"
+          android:padding="8dp"
+          android:scrollbars="vertical"
+          style="@style/CardViewStyle"
+          >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_height="wrap_content"
             android:background="@color/white"
-            app:spark_lineColor="@color/primary"
-            />
+            android:orientation="vertical"
+            >
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingBottom="32dp"
+              android:paddingTop="16dp"
+              >
+            <TextView
+                android:id="@+id/share_quote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/spark_line_color"
+                android:textSize="28sp"
+                tools:text="$121.73"
+                />
 
-      </LinearLayout>
-    </android.support.v7.widget.CardView>
-  </FrameLayout>
+            <TextView
+                android:id="@+id/share_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/spark_line_color"
+                tools:text="+$1.10 (+0.92%) Today"
+                />
+          </LinearLayout>
 
-  <TextView android:id="@+id/button_buy_shares"
-      style="@style/BuyButton"
-      android:layout_width="match_parent"
-      android:layout_height="42dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginRight="8dp"
-      android:layout_marginTop="16dp"
-      android:text="@string/share_info_buy"
-      android:visibility="gone"
-      tools:visibility="visible"/>
+          <com.robinhood.spark.SparkView
+              android:id="@+id/share_graphics_spark"
+              android:layout_width="match_parent"
+              android:layout_height="240dp"
+              android:layout_marginBottom="8dp"
+              android:layout_marginLeft="8dp"
+              android:layout_marginRight="8dp"
+              android:layout_marginTop="8dp"
+              android:background="@color/white"
+              app:spark_lineColor="@color/primary"
+              />
 
-  <TextView android:id="@+id/button_sell_shares"
-      style="@style/BuyButton"
-      android:layout_width="match_parent"
-      android:layout_height="42dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginRight="8dp"
-      android:layout_marginTop="16dp"
-      android:text="@string/share_info_sell"
-      android:visibility="gone"
-      tools:visibility="visible"/>
+        </LinearLayout>
+      </android.support.v7.widget.CardView>
+    </FrameLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/button_buy_shares"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/share_info_buy"
+        android:visibility="gone"
+        tools:visibility="visible"
+        style="@style/BuyButton"
+        />
+
+    <TextView
+        android:id="@+id/button_sell_shares"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/share_info_sell"
+        android:visibility="gone"
+        tools:visibility="visible"
+        style="@style/BuyButton"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="@string/recent_news"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"/>
+
+    <com.extraditables.los.brokin.re_brokin.android.infrastructure.NestedListView
+        android:id="@+id/tweets_feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#e1e8ed"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="false"
+        />
+  </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

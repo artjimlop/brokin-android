@@ -57,11 +57,11 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
         percent.setText("Change: " + String.valueOf(stockModel.getChangePercentage()+"%"));
 
         if (stockModel.getChangePercentage() < 0) {
-            value.setTextColor(Color.parseColor("#D50000"));
+            value.setTextColor(context.getResources().getColor(R.color.red));
         } else if (stockModel.getChangePercentage() > 0) {
-            value.setTextColor(Color.parseColor("#00C853"));
+            value.setTextColor(context.getResources().getColor(R.color.primary));
         } else {
-            value.setTextColor(Color.parseColor("#424242"));
+            value.setTextColor(context.getResources().getColor(R.color.gray));
         }
 
 

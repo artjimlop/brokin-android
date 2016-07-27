@@ -6,4 +6,7 @@
     <color name="primary_dark">#00796B</color>
     <color name="primary_indicated">#009688</color>
     <color name="gray_50">#808080</color>
+    <color name="unselected_tab_text_color">#BDF0E1</color>
+    <color name="red">#F45531</color>
+    <color name="gray">#6F6F71</color>
 </resources>

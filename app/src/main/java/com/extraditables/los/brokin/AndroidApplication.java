@@ -21,10 +21,17 @@ import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.co
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component.DaggerApplicationComponent;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ApplicationModule;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.tools.CrashReportTool;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
 import javax.inject.Inject;
 
 public class AndroidApplication extends Application {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "VOXHXZ7tMkJB4XkI66ezpSDs1";
+    private static final String TWITTER_SECRET = "Q6SMvgFOhv53UZzcev0XZOkvvWYgRwLYDubK5G8VArIYsI7N1E";
+
 
     @Inject CrashReportTool crashReportTool;
     private ApplicationComponent component;
@@ -34,11 +41,19 @@ public class AndroidApplication extends Application {
         super.onCreate();
         initializeInjector();
         initializeBugDetector();
+        setupNotificationManager();
+    }
+
+    private void setupNotificationManager() {
+        component.provideNotificationManager().handleNotificationsNYSE(NOTIFICATION_SERVICE);
     }
 
     private void initializeBugDetector() {
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         if (!BuildConfig.DEBUG) {
-            Fabric.with(this, new Crashlytics());
+            Fabric.with(this, new Crashlytics(), new Twitter(authConfig));
+        } else {
+            Fabric.with(this, new Twitter(authConfig));
         }
     }
 

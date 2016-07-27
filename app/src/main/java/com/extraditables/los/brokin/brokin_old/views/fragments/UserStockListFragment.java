@@ -15,23 +15,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.extraditables.los.brokin.brokin_old.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.brokin_old.adapters.UserStockAdapter;
 import com.extraditables.los.brokin.brokin_old.adapters.listeners.OnUserStockClickListener;
 import com.extraditables.los.brokin.brokin_old.db.DatabaseHelper;
 import com.extraditables.los.brokin.brokin_old.models.UserModel;
 import com.extraditables.los.brokin.brokin_old.models.UserStockModel;
+import com.extraditables.los.brokin.brokin_old.views.activity.MainTabbedActivity;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -49,11 +46,8 @@ public class UserStockListFragment extends Fragment {
     private static TextView noStocksFound;
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     private static UserStockAdapter userStockAdapter;
     private static Context context;
-    private Handler backgroundHandler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,12 +67,12 @@ public class UserStockListFragment extends Fragment {
 
         noStocksFound = (TextView) getActivity().findViewById(R.id.stocks_buyed_empty);
 
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         BackgroundThread backgroundThread = new BackgroundThread();
         backgroundThread.start();
-        backgroundHandler = new Handler(backgroundThread.getLooper());
+        Handler backgroundHandler = new Handler(backgroundThread.getLooper());
 
         sampleObservable()
                 // Run on a background thread
@@ -99,7 +93,6 @@ public class UserStockListFragment extends Fragment {
                             }
                         }, stocks, getActivity());
 
-                        mAdapter = userStockAdapter;
                         mRecyclerView.setAdapter(userStockAdapter);
 
                         if(stocks.isEmpty()) {
@@ -195,22 +188,6 @@ public class UserStockListFragment extends Fragment {
             Toast.makeText(context, "Check your internet connection", Toast.LENGTH_SHORT).show();
         }
         return stocks;
-    }
-
-    public static UserStockAdapter getAdapter() {
-        return userStockAdapter;
-    }
-
-    public static void refreshList(List<UserStockModel> stocks) {
-        userStockAdapter.setStocks(stocks);
-        userStockAdapter.notifyDataSetChanged();
-
-        if(stocks.isEmpty()) {
-            noStocksFound.setVisibility(View.VISIBLE);
-        } else {
-            noStocksFound.setVisibility(View.GONE);
-        }
-
     }
 
     public static void refreshStocks() {

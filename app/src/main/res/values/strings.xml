@@ -21,4 +21,5 @@
   <string name="share_info_sell_description">Are you sure you want to sell?</string>
   <string name="share_info_sell_ok">Sell</string>
   <string name="share_info_sell_cancel">Cancel</string>
+  <string name="recent_news">Recent news</string>
 </resources>

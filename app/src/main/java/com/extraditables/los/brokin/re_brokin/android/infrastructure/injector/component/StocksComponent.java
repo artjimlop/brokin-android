@@ -15,6 +15,7 @@
  */
 package com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component;
 
+import com.extraditables.los.brokin.brokin_old.views.activity.MainTabbedActivity;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.PerActivity;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ActivityModule;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.StockModule;
@@ -25,6 +26,8 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class,
     StockModule.class})
 public interface StocksComponent extends ActivityComponent {
+
+    void inject(MainTabbedActivity mainTabbedActivity);
 
     void inject(ShareInfoActivity shareInfoActivity);
 }

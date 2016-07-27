@@ -18,6 +18,7 @@ import com.extraditables.los.brokin.R;
 import com.extraditables.los.brokin.brokin_old.adapters.StockAdapter;
 import com.extraditables.los.brokin.brokin_old.adapters.listeners.OnStockClickListener;
 import com.extraditables.los.brokin.brokin_old.models.StockModel;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.shares.ShareSymbols;
 import com.extraditables.los.brokin.re_brokin.android.view.activities.ShareInfoActivity;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -113,9 +114,9 @@ public class StocksListFragment extends Fragment {
             @Override public Observable<List<StockModel>> call() {
                 final List<StockModel> stockModels = new ArrayList<>();
                 try {
-                    String[] symbols = new String[] {"INTC", "BABA", "TSLA", "YHOO", "ABM", "NE", "IEZ", "GOOG" ,"AMBA", "PSEC", "AAPL", "ODFL", "MMM", "ABT", "ABBV", "AEP", "AET", "ABC", "AMGN", "ADP", "BDX", "BP", "ADBE", "ALXN", "AMZN", "BIIB","BIDU","CELG","COST","GILD","ISRG","PCLN","SRCL","ATVI", "EBAY","NVDA", "FOX", "VIP"};
-                    Map<String, Stock> stocks = YahooFinance.get(symbols);
-                    for (Stock stock : stocks.values()) {
+                  String[] symbols = ShareSymbols.SYMBOLS;
+                  Map<String, Stock> stocks = YahooFinance.get(symbols);
+                  for (Stock stock : stocks.values()) {
                         StockModel stockModel = new StockModel();
                         stockModel.setName(stock.getName());
                         stockModel.setSymbol(stock.getSymbol());

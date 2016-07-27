@@ -16,6 +16,7 @@
 package com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.component;
 
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.injector.module.ApplicationModule;
+import com.extraditables.los.brokin.re_brokin.android.infrastructure.notifications.NotificationsManager;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.LocalStockRepository;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.stock.RemoteStockRepository;
 import com.extraditables.los.brokin.re_brokin.android.infrastructure.repositories.user.UserRepository;
@@ -40,4 +41,6 @@ public interface ApplicationComponent {
     LocalStockRepository getLocalStockRepository();
 
     UserRepository getLocalDatabaseUserRepository();
+
+    NotificationsManager provideNotificationManager();
 }
