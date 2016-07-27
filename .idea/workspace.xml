@@ -25,41 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292bbf9b-be39-4201-8e82-5e38a6b080da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/answers_shim_0_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/digits_1_11_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/retrofit_1_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/retrofit_mock_1_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/tweet_composer_1_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/tweet_ui_1_11_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/twitter_1_14_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/twitter_core_1_7_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/twitter_text_1_13_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/NestedListView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/notifications/NotificationsManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/notifications/NotificationsTool.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/shares/ShareSymbols.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/fabric.properties" afterPath="$PROJECT_DIR$/app/fabric.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/AndroidApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/AndroidApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/StockViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/StockViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/UserStockViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/UserStockViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/activity/MainTabbedActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/activity/MainTabbedActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/fragments/StocksListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/fragments/StocksListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/fragments/UserStockListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/fragments/UserStockListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/component/ApplicationComponent.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/component/ApplicationComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/component/StocksComponent.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/component/StocksComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/module/ApplicationModule.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/module/ApplicationModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/view/activities/ShareInfoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/view/activities/ShareInfoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="brokin-android.iws" />
@@ -89,16 +59,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AndroidApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/AndroidApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667">
-              <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StockViewHolder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/StockViewHolder.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -119,14 +79,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NestedListView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NestedListView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/NestedListView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4500846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.8170733">
+              <caret line="38" column="89" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main_tabbed.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4871795">
+              <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,7 +150,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.7017546">
+            <state vertical-scroll-proportion="-39.0">
               <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
               <folding>
                 <element signature="e#3022#3046#0" expanded="true" />
@@ -185,7 +168,7 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-5.0">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="16" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -2118,7 +2101,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/repositories/ServiceStockRepository.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/core/actions/GetShareHistoryAction.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/view/adapters/GraphicAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/view/activities/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/view/ShareInfoView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -2154,15 +2136,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/injector/module/ActivityModule.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/views/fragments/StocksListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/shares/ShareSymbols.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/StockViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/brokin_old/adapters/UserStockViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/AndroidApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/view/activities/ShareInfoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/NestedListView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml" />
       </list>
     </option>
   </component>
@@ -3342,6 +3325,24 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brokin-android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -3980,7 +3981,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1865" height="1057" extended-state="6" />
+    <frame x="0" y="23" width="1865" height="1057" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -4287,7 +4288,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4305,7 +4306,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="89" column="29" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4331,21 +4332,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2540#2541#0" expanded="true" />
-            <element signature="e#2580#2581#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2540#2541#0" expanded="false" />
+            <element signature="e#2580#2581#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4353,14 +4343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3818182">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -4421,17 +4403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.twitter.sdk.android/tweet-ui/1.11.1/1fcaf2f90a8a2d7a0ce502805a55de34f7728eb6/tweet-ui-1.11.1-sources.jar!/com/twitter/sdk/android/tweetui/TweetTimelineListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4445,21 +4416,6 @@
         <state vertical-scroll-proportion="0.33333334">
           <caret line="206" column="23" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_share_info.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.7017546">
-          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
-          <folding>
-            <element signature="e#3022#3046#0" expanded="true" />
-            <element signature="e#3443#3468#0" expanded="true" />
-            <element signature="e#3811#3832#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4481,11 +4437,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/extraditables/los/brokin/re_brokin/android/infrastructure/NestedListView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4500846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8170733">
+          <caret line="38" column="89" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_share_info.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-39.0">
+          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+          <folding>
+            <element signature="e#3022#3046#0" expanded="true" />
+            <element signature="e#3443#3468#0" expanded="true" />
+            <element signature="e#3811#3832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_share_info_content.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="16" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_tabbed.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4871795">
+          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="BrokinTheme" parent="Theme.AppCompat">
+    <style name="BrokinTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -35,4 +35,7 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:alpha">0.8</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>
