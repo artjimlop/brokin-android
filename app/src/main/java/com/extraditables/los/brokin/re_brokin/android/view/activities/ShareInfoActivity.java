@@ -37,10 +37,17 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   @Bind(R.id.share_quote) TextView shareQuote;
   @Bind(R.id.share_change) TextView shareChange;
   @Bind(R.id.tweets_feed) NestedListView tweets;
+  @Bind(R.id.share_graphics_spark) SparkView graphic;
+  @Bind(R.id.share_info_week) TextView oneDayTextView;
+  @Bind(R.id.share_info_month) TextView oneMonthTextView;
+  @Bind(R.id.share_info_three_month) TextView threeMonthTextView;
+  @Bind(R.id.share_info_six_month) TextView sixMonthTextView;
+  @Bind(R.id.share_info_year) TextView aYearTextView;
 
   private static final String EXTRA_SYMBOL = "symbol";
   private static final String EXTRA_SELL = "sell";
   private static final String EXTRA_USER_STOCK_ID = "user_stock_id";
+  private String quoteValue;
 
   public static Intent getCallingIntent(Context context, String symbol, Boolean sell) {
     Intent intent = new Intent(context, ShareInfoActivity.class);
@@ -76,6 +83,8 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
         .build();
 
     tweets.setAdapter(adapter);
+
+    oneMonthTextView.setTextColor(getResources().getColor(R.color.black));
   }
 
   private void initializeViews(String symbol) {
@@ -105,10 +114,17 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   @Override public void showGraphic(float[] data) {
-    SparkView graphic = (SparkView) findViewById(R.id.share_graphics_spark);
-    if (graphic != null) {
-      graphic.setAdapter(new GraphicAdapter(data));
-    }
+    graphic.setAdapter(new GraphicAdapter(data));
+    graphic.setScrubListener(new SparkView.OnScrubListener() {
+      @Override
+      public void onScrubbed(Object value) {
+        if (value == null) {
+          shareQuote.setText(quoteValue);
+        } else {
+          shareQuote.setText(getString(R.string.share_info_quote, String.valueOf(value)));
+        }
+      }
+    });
   }
 
   @Override public void showSellButton() {
@@ -122,7 +138,8 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   @Override public void setQuote(BigDecimal quote) {
-    shareQuote.setText(getString(R.string.share_info_quote, String.valueOf(quote)));
+    quoteValue = getString(R.string.share_info_quote, String.valueOf(quote));
+    shareQuote.setText(quoteValue);
   }
 
   @Override public void setChange(BigDecimal change, BigDecimal chageInPercent) {
@@ -135,7 +152,6 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   private void buyStocksAdapter() {
-
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     final EditText numberOfStocks = new EditText(this);
     numberOfStocks.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -165,5 +181,50 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
           }
         })
         .setNegativeButton(getString(R.string.share_info_sell_cancel), null).create().show();
+  }
+
+  @OnClick(R.id.share_info_week) public void dayHistoryClicked() {
+    presenter.onWeekHistoryClicked();
+    oneDayTextView.setTextColor(getResources().getColor(R.color.black));
+    oneMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    threeMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    sixMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    aYearTextView.setTextColor(getResources().getColor(R.color.primary));
+  }
+
+  @OnClick(R.id.share_info_month) public void monthHistoryClicked() {
+    presenter.onMonthHistoryClicked();
+    oneDayTextView.setTextColor(getResources().getColor(R.color.primary));
+    oneMonthTextView.setTextColor(getResources().getColor(R.color.black));
+    threeMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    sixMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    aYearTextView.setTextColor(getResources().getColor(R.color.primary));
+  }
+
+  @OnClick(R.id.share_info_three_month) public void threeMonthHistoryClicked() {
+    presenter.onThreeHistoryClicked();
+    oneDayTextView.setTextColor(getResources().getColor(R.color.primary));
+    oneMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    threeMonthTextView.setTextColor(getResources().getColor(R.color.black));
+    sixMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    aYearTextView.setTextColor(getResources().getColor(R.color.primary));
+  }
+
+  @OnClick(R.id.share_info_six_month) public void sixMonthHistoryClicked() {
+    presenter.onSixHistoryClicked();
+    oneDayTextView.setTextColor(getResources().getColor(R.color.primary));
+    oneMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    threeMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    sixMonthTextView.setTextColor(getResources().getColor(R.color.black));
+    aYearTextView.setTextColor(getResources().getColor(R.color.primary));
+  }
+
+  @OnClick(R.id.share_info_year) public void yearHistoryClicked() {
+    presenter.onYearHistoryClicked();
+    oneDayTextView.setTextColor(getResources().getColor(R.color.primary));
+    oneMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    threeMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    sixMonthTextView.setTextColor(getResources().getColor(R.color.primary));
+    aYearTextView.setTextColor(getResources().getColor(R.color.black));
   }
 }

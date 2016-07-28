@@ -6,14 +6,17 @@ import com.extraditables.los.brokin.re_brokin.core.actions.Action;
 import com.extraditables.los.brokin.re_brokin.core.actions.BuyShareAction;
 import com.extraditables.los.brokin.re_brokin.core.actions.GetShareHistoryAction;
 import com.extraditables.los.brokin.re_brokin.core.actions.SellShareAction;
+import com.extraditables.los.brokin.re_brokin.core.model.ShareHistoryMode;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import yahoofinance.Stock;
+import yahoofinance.histquotes.HistoricalQuote;
 
 public class ShareInfoPresenter implements Presenter {
 
@@ -38,7 +41,11 @@ public class ShareInfoPresenter implements Presenter {
     this.symbol = symbol;
     this.userStockId = userStockId;
     setupSharesOption(sell);
-    getShareHistoryAction.getHistory(symbol, new Action.Callback<Observable<Stock>>() {
+    loadMonthlyGraphics(shareInfoView, symbol, 1);
+  }
+
+  private void loadMonthlyGraphics(final ShareInfoView shareInfoView, String symbol, int quantity) {
+    getShareHistoryAction.getHistory(symbol, ShareHistoryMode.MONTH, quantity, new Action.Callback<Observable<Stock>>() {
       @Override public void onLoaded(Observable<Stock> observable) {
         observable.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -91,11 +98,14 @@ public class ShareInfoPresenter implements Presenter {
 
   private void setupGraphicsData(Stock stock, ShareInfoView shareInfoView) {
     try {
-      float[] data = new float[stock.getHistory().size()];
-      for(int i = 0; i < stock.getHistory().size(); i++) {
-        data[i] = stock.getHistory().get(i).getClose().floatValue();
+      List<HistoricalQuote> history = stock.getHistory();
+      float[] data = new float[history.size()];
+      for(int i = 0; i < history.size(); i++) {
+        data[i] = history.get(i).getClose().floatValue();
       }
-      shareInfoView.showGraphic(data);
+      if (data != null) {
+        shareInfoView.showGraphic(data);
+      }
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -151,5 +161,54 @@ public class ShareInfoPresenter implements Presenter {
 
   @Override public void destroy() {
 
+  }
+
+  public void onWeekHistoryClicked() {
+    getShareHistoryAction.getHistory(symbol, ShareHistoryMode.DAY, 7, new Action.Callback<Observable<Stock>>() {
+      @Override public void onLoaded(Observable<Stock> observable) {
+        observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Observer<Stock>() {
+              @Override public void onCompleted() {
+
+              }
+
+              @Override public void onError(Throwable e) {
+
+              }
+
+              @Override public void onNext(Stock stock) {
+                setShare(stock);
+                setupQuote(stock, shareInfoView);
+                setupChange(stock, shareInfoView);
+                setupGraphicsData(stock, shareInfoView);
+              }
+            });
+      }
+
+      @Override public void onComplete() {
+
+      }
+
+      @Override public void onError() {
+
+      }
+    });
+  }
+
+  public void onMonthHistoryClicked() {
+    loadMonthlyGraphics(shareInfoView, symbol, 1);
+  }
+
+  public void onThreeHistoryClicked() {
+    loadMonthlyGraphics(shareInfoView, symbol, 3);
+  }
+
+  public void onSixHistoryClicked() {
+    loadMonthlyGraphics(shareInfoView, symbol, 6);
+  }
+
+  public void onYearHistoryClicked() {
+    loadMonthlyGraphics(shareInfoView, symbol, 12);
   }
 }

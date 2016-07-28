@@ -67,9 +67,60 @@
               android:layout_marginRight="8dp"
               android:layout_marginTop="8dp"
               android:background="@color/white"
+              app:spark_scrubEnabled="true"
               app:spark_lineColor="@color/primary"
               />
 
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:gravity="center"
+              >
+            <TextView
+                android:id="@+id/share_info_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary"
+                android:padding="8dp"
+                android:text="@string/one_week"
+                />
+            <TextView
+                android:id="@+id/share_info_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary"
+                android:padding="8dp"
+                android:text="@string/one_month"
+                />
+
+            <TextView
+                android:id="@+id/share_info_three_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary"
+                android:padding="8dp"
+                android:text="@string/three_month"
+                />
+
+            <TextView
+                android:id="@+id/share_info_six_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary"
+                android:padding="8dp"
+                android:text="@string/six_month"
+                />
+
+            <TextView
+                android:id="@+id/share_info_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary"
+                android:padding="8dp"
+                android:text="@string/a_year"
+                />
+            </LinearLayout>
         </LinearLayout>
       </android.support.v7.widget.CardView>
     </FrameLayout>

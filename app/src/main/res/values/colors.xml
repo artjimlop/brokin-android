@@ -9,4 +9,5 @@
     <color name="unselected_tab_text_color">#BDF0E1</color>
     <color name="red">#F45531</color>
     <color name="gray">#6F6F71</color>
+    <color name="black">#000000</color>
 </resources>

@@ -5,5 +5,7 @@ import yahoofinance.Stock;
 
 public interface RemoteStockRepository {
 
-  Observable<Stock> getHistory(String symbol);
+  Observable<Stock> getMonthHistory(String symbol, Integer quantity);
+
+  Observable<Stock> getWeekHistory(String symbol);
 }
