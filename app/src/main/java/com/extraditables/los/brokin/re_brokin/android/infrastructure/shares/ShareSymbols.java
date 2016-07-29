@@ -10,6 +10,7 @@ public interface ShareSymbols {
       "ZFGN", "ARNA", "SMIT", "CYTR", "VNR", "PTX", "TLOG", "OPGN", "ODP", "RNVA", "ORIG", "ETRM",
       "GLUU", "BLDP", "ZIOP", "EGLE", "IMNP", "CADC", "SGYP", "HTBX", "NFEC", "REXX", "TWER", "IMMU",
       "COSI", "CLDX", "DRRX", "SAEX", "CLNE", "MNKD", "XGTI", "WPRT", "EPRS", "ZAIS", "AXAS", "EYES",
-      "GBSN"
+      "GRPN", "EVOK", "ZNGA", "TKAI", "EBIO", "DELT", "SQNM", "ALIM",
+      "ASTI", "GBSN", "FATE", "ETRM", "BIND", "VSTM", "DRAM", "AMDA", "BIOD"
   };
 }
