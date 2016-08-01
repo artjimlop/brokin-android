@@ -94,13 +94,6 @@ public class UserStockListFragment extends Fragment {
                         }, stocks, getActivity());
 
                         mRecyclerView.setAdapter(userStockAdapter);
-
-                        if(stocks.isEmpty()) {
-                            noStocksFound.setVisibility(View.VISIBLE);
-                        } else {
-                            noStocksFound.setVisibility(View.GONE);
-
-                        }
                     }
 
                     @Override
@@ -113,6 +106,11 @@ public class UserStockListFragment extends Fragment {
                         stocks.addAll(stockModels);
                         for (UserStockModel stockModel : stockModels) {
                             updateUserStockModelInDB(stockModel);
+                        }
+                        if(stocks.isEmpty()) {
+                            noStocksFound.setVisibility(View.VISIBLE);
+                        } else {
+                            noStocksFound.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -208,7 +206,13 @@ public class UserStockListFragment extends Fragment {
                     public void onCompleted() {
                         userStockAdapter.setStocks(stocks);
                         userStockAdapter.notifyDataSetChanged();
-                        Log.d("BASTINAZO", "IF");
+
+                        if(stocks.isEmpty()) {
+                            noStocksFound.setVisibility(View.VISIBLE);
+                        } else {
+                            noStocksFound.setVisibility(View.GONE);
+                        }
+
                         if (currentUserMoney[0] != 0.0f) {
                             UserModel userInfoFromDB = getUserInfoFromDB();
                             ActionBar supportActionBar = ((MainTabbedActivity) context).getSupportActionBar();
