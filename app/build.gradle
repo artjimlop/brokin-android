@@ -1,19 +1,24 @@
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
     }
 
     dependencies {
         classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
     }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 repositories {
-    maven { url 'https://maven.fabric.io/public' }
+  maven {
+    url 'https://maven.fabric.io/public'
+    mavenCentral()
+  }
 }
-
+apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 
 def cfg = rootProject.ext.configuration;
@@ -24,17 +29,28 @@ def versionMinor = 0
 def versionRevision = 0
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  compileSdkVersion cfg.compileVersion
+  buildToolsVersion "24.0.1"
 
   defaultConfig {
     applicationId "com.losextraditables.brokin"
-    minSdkVersion 14
-    targetSdkVersion 23
+    minSdkVersion cfg.minSdk
+    targetSdkVersion cfg.targetSdk
     versionCode versionMajor * 1000000 + versionMinor * 1000 + versionRevision
     versionName versionMajor + "." + versionMinor + "." + versionRevision
   }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
   buildTypes {
+    debug {
+      minifyEnabled false
+      applicationIdSuffix ".debug"
+      versionNameSuffix 'Debug'
+    }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -51,7 +67,7 @@ dependencies {
   compile 'com.j256.ormlite:ormlite-core:4.48'
   compile 'com.j256.ormlite:ormlite-android:4.48'
   compile 'com.facebook.stetho:stetho:1.1.1'
-  compile 'com.google.android.gms:play-services-ads:8.4.0'
+  compile 'com.google.android.gms:play-services-ads:9.2.1'
   compile "com.android.support:appcompat-v7:${libs.supportVersion}"
   compile "com.android.support:design:${libs.supportVersion}"
   compile "com.jakewharton:butterknife:${libs.butterknife}"

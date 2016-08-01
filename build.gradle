@@ -2,10 +2,10 @@
 
 ext {
     configuration = [
-        compileVersion      : 23,
-        buildToolsVersion   : "23.0.2",
+        compileVersion      : 24,
+        buildToolsVersion   : "24.1.1",
         minSdk              : 16,
-        targetSdk           : 23,
+        targetSdk           : 24,
         version_code        : 1,
         version_name        : "0.1"
     ]
@@ -13,7 +13,7 @@ ext {
     libraries = [
         dagger              : "2.4",
         javax_annotation    : "10.0-b28",
-        supportVersion      : "23.3.0",
+        supportVersion      : "24.1.1",
         butterknife         : "7.0.1",
         lombok              : "1.16.8",
         okhttp              : "3.2.0",
