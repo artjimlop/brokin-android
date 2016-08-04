@@ -1,19 +1,20 @@
 package com.losextraditables.brokin.brokin_old.adapters;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
 import com.losextraditables.brokin.R;
 import com.losextraditables.brokin.brokin_old.adapters.listeners.OnStockClickListener;
 import com.losextraditables.brokin.brokin_old.db.DatabaseHelper;
@@ -21,8 +22,6 @@ import com.losextraditables.brokin.brokin_old.models.StockModel;
 import com.losextraditables.brokin.brokin_old.models.UserModel;
 import com.losextraditables.brokin.brokin_old.views.activity.MainTabbedActivity;
 import com.losextraditables.brokin.re_brokin.android.view.activities.ShareInfoActivity;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 
@@ -87,30 +86,37 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void createUserAdapter(final View v) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        final EditText username = new EditText(v.getContext());
-
-        builder.setView(username);
-        builder.setMessage("You haven't created a user yet. Please insert your name to continue:")
-                .setPositiveButton("Sign in", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        String userNameString = username.getText().toString();
-                        String usernameWithoutSpaces = userNameString.replaceAll("\\s+", "");
-                        if(usernameWithoutSpaces.length() <2) {
-                            Toast.makeText(context, "Username must have two characters minimum", Toast.LENGTH_SHORT).show();
-                        } else {
-                            UserModel userModel = new UserModel();
-                            createUserInfo(userModel, username);
-                            updateUserInfoInToolbar(userModel);
-                            insertUserInfoInDB(userModel);
-                            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-                            SharedPreferences.Editor prefEditor = prefs.edit();
-                            prefEditor.putString(USER_USERNAME, userModel.getUserName());
-                            prefEditor.apply();
-                        }
-                    }
-                })
-                .setNegativeButton("Cancel", null).create().show();
+        SweetAlertDialog dialog = new SweetAlertDialog(context);
+        dialog
+            .setTitleText("Create a user!")
+            .setContentText("You haven't created a user yet. Please insert your name to continue:")
+            .showEditText(true, null)
+            .setConfirmText("Sign in")
+            .setConfirmClickListener(sweetAlertDialog -> {
+                String userNameString = dialog.getEditTextInput();
+                String usernameWithoutSpaces = userNameString.replaceAll("\\s+", "");
+                Toast.makeText(context, userNameString, Toast.LENGTH_SHORT).show();
+                if(usernameWithoutSpaces.length() < 2) {
+                    Toast.makeText(context, "Username must have two characters minimum", Toast.LENGTH_SHORT).show();
+                } else {
+                    UserModel userModel = new UserModel();
+                    createUserInfo(userModel, userNameString);
+                    updateUserInfoInToolbar(userModel);
+                    insertUserInfoInDB(userModel);
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+                    SharedPreferences.Editor prefEditor = prefs.edit();
+                    prefEditor.putString(USER_USERNAME, userModel.getUserName());
+                    prefEditor.apply();
+                    dialog.setTitleText("Welcome!")
+                        .setContentText("Now you can trade freely")
+                        .setConfirmText("OK")
+                        .showEditText(false, InputType.TYPE_CLASS_NUMBER)
+                        .setConfirmClickListener(null)
+                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                }
+            })
+            .setCancelText("Cancel")
+            .show();
     }
 
     private void insertUserInfoInDB(UserModel userModel) {
@@ -126,11 +132,11 @@ public class StockViewHolder extends RecyclerView.ViewHolder {
         OpenHelperManager.releaseHelper();
     }
 
-    private void createUserInfo(UserModel userModel, EditText username) {
-        if(username.getText().toString().isEmpty()) {
+    private void createUserInfo(UserModel userModel, String username) {
+        if(username.isEmpty()) {
             userModel.setUserName("user"+String.valueOf(Math.random()));
         } else {
-            userModel.setUserName(username.getText().toString());
+            userModel.setUserName(username);
         }
         userModel.setCash(10000.0F);
     }

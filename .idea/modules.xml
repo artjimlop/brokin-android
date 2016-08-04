@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/brokin-android.iml" filepath="$PROJECT_DIR$/brokin-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sweetdialogs/sweetdialogs.iml" filepath="$PROJECT_DIR$/sweetdialogs/sweetdialogs.iml" />
     </modules>
   </component>
 </project>

@@ -83,4 +83,5 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:1.14.1@aar') {
         transitive = true;
     }
+  compile project(path: ':library')
 }

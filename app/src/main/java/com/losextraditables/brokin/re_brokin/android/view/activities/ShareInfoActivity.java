@@ -1,6 +1,5 @@
 package com.losextraditables.brokin.re_brokin.android.view.activities;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,11 +7,12 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import com.losextraditables.brokin.R;
 import com.losextraditables.brokin.re_brokin.android.infrastructure.NestedListView;
 import com.losextraditables.brokin.re_brokin.android.infrastructure.injector.component.ApplicationComponent;
@@ -152,20 +152,23 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   private void buyStocksAdapter() {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    final EditText numberOfStocks = new EditText(this);
-    numberOfStocks.setInputType(InputType.TYPE_CLASS_NUMBER);
-    builder.setView(numberOfStocks);
-    builder.setMessage(R.string.alert_buy_title)
-        .setPositiveButton(R.string.alert_buy_ok, new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int id) {
-            Long sharesToBuy = Long.valueOf(numberOfStocks.getText().toString());
-            presenter.buy(sharesToBuy);
-          }
-        })
-        .setNegativeButton(R.string.alert_buy_cancel, null)
-        .create()
-        .show();
+    //numberOfStocks.setInputType(InputType.TYPE_CLASS_NUMBER);
+    SweetAlertDialog dialog = new SweetAlertDialog(this);
+    dialog.setTitleText(getString(R.string.alert_buy_ok))
+        .setContentText(getString(R.string.alert_buy_title))
+        .showEditText(true, InputType.TYPE_CLASS_NUMBER)
+        .editTextNumberType()
+        .setConfirmText("Buy")
+        .setConfirmClickListener(sweetAlertDialog -> {
+          Long sharesToBuy = Long.valueOf(dialog.getEditTextInput());
+          presenter.buy(sharesToBuy);
+          dialog.hide();
+          showFeedback("Added to your portfolio");
+        }).setCancelText(getString(R.string.alert_buy_cancel)).show();
+  }
+
+  private void showFeedback(String feedback) {
+    Toast.makeText(this, feedback, Toast.LENGTH_SHORT).show();
   }
 
   @OnClick(R.id.button_sell_shares) public void onSellClick() {

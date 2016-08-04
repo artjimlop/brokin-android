@@ -41,7 +41,7 @@ public class BuyShareAction implements Action {
     float stocksToBuy = moneyToSpend / price;
     Integer userCash = userModel.getCash().intValue();
     if (userCash > 0) {
-      if(stocksToBuy > 0) {
+      if(stocksToBuy > 1) {
         userModel.setCash(userCash - stocksToBuy * price);
         UserStockModel
             userStockModel = createStockModel(userModel, stock, stocksToBuy);
@@ -49,8 +49,9 @@ public class BuyShareAction implements Action {
         updateUserInfoInDB(userModel);
 
         notifySuccess();
+      } else {
+        notifyError();
       }
-
     } else {
       notifyError();
     }

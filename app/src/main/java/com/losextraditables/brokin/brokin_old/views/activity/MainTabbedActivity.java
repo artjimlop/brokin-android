@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.losextraditables.brokin.R;
 import com.losextraditables.brokin.brokin_old.db.DatabaseHelper;
 import com.losextraditables.brokin.brokin_old.models.UserModel;
@@ -21,7 +22,6 @@ import com.losextraditables.brokin.re_brokin.android.infrastructure.injector.com
 import com.losextraditables.brokin.re_brokin.android.infrastructure.injector.module.ActivityModule;
 import com.losextraditables.brokin.re_brokin.android.infrastructure.injector.module.StockModule;
 import com.losextraditables.brokin.re_brokin.android.view.activities.BaseActivity;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -79,11 +79,9 @@ public class MainTabbedActivity extends BaseActivity {
                 Executors.newSingleThreadScheduledExecutor();
 
         scheduler.scheduleAtFixedRate
-                (new Runnable() {
-                    public void run() {
-                        StocksListFragment.refreshStocks();
-                        UserStockListFragment.refreshStocks();
-                    }
+                ((Runnable) () -> {
+                    StocksListFragment.refreshStocks();
+                    UserStockListFragment.refreshStocks();
                 }, 0, 10, TimeUnit.SECONDS);
     }
 
@@ -139,5 +137,4 @@ public class MainTabbedActivity extends BaseActivity {
         }
     }
     }
-
 }
