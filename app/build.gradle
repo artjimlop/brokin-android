@@ -26,7 +26,7 @@ def libs = rootProject.ext.libraries;
 
 def versionMajor = 2
 def versionMinor = 0
-def versionRevision = 0
+def versionRevision = 1
 
 android {
   compileSdkVersion cfg.compileVersion

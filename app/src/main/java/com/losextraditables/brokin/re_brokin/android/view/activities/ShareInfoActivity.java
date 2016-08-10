@@ -175,15 +175,15 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
 
   private void sellStocksAdapter() {
     SweetAlertDialog dialog = new SweetAlertDialog(this);
-    dialog.setTitleText(getString(R.string.share_info_sell))
+    dialog.setTitleText("Sell")
         .setContentText(getString(R.string.share_info_sell_description))
         .showEditText(false, null)
         .setConfirmText("Sell")
         .setConfirmClickListener(sweetAlertDialog -> {
           presenter.sell();
           dialog.hide();
-        }).setCancelText(getString(R.string.alert_buy_cancel))
-        .setCancelClickListener(sweetAlertDialog -> dialog.hide()).show();
+          showFeedback("Removed from your portfolio");
+        }).setCancelText(getString(R.string.alert_buy_cancel)).show();
   }
 
   @OnClick(R.id.share_info_week) public void dayHistoryClicked() {

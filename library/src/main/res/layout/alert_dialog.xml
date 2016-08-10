@@ -5,11 +5,10 @@
     android:id="@+id/loading"
     android:layout_width="@dimen/alert_width"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@drawable/dialog_background"
-    android:padding="10dp"
+    android:padding="4dp"
     >
 
     <ImageView
@@ -107,7 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
-        android:layout_gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -123,7 +121,8 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="19sp"
+        android:textSize="18sp"
+        android:layout_marginLeft="8dp"
         android:textColor="#575757"
         android:layout_marginTop="10dp"
         android:singleLine="true"
@@ -134,20 +133,21 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:gravity="center"
+        android:layout_marginLeft="8dp"
+        android:textSize="16sp"
         android:textColor="#797979"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:text="aasdasd"
+        tools:visibility="visible"/>
 
     <EditText
         android:id="@+id/edit_text"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textColor="#797979"
         android:visibility="gone"
         android:inputType="textCapWords"
@@ -157,19 +157,24 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="right">
 
-        <Button
+        <TextView
             android:id="@+id/cancel_button"
-            style="@style/dialog_blue_button"
-            android:background="@drawable/gray_button_background"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            style="@style/BorderlessButton.Secondary"
             android:layout_marginRight="10dp"
             android:visibility="gone"
+            tools:visibility="visible"
             android:text="@string/dialog_cancel" />
 
-        <Button
+        <TextView
             android:id="@+id/confirm_button"
-            style="@style/dialog_blue_button"
-            android:text="@string/dialog_ok" />
+            style="@style/BorderlessButton.Primary"
+            android:text="@string/dialog_ok"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
     </LinearLayout>
 </LinearLayout>
