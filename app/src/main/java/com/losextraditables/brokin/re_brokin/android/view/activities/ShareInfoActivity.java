@@ -1,7 +1,6 @@
 package com.losextraditables.brokin.re_brokin.android.view.activities;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -152,7 +151,6 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   private void buyStocksAdapter() {
-    //numberOfStocks.setInputType(InputType.TYPE_CLASS_NUMBER);
     SweetAlertDialog dialog = new SweetAlertDialog(this);
     dialog.setTitleText(getString(R.string.alert_buy_ok))
         .setContentText(getString(R.string.alert_buy_title))
@@ -176,14 +174,16 @@ public class ShareInfoActivity extends BaseActivity implements ShareInfoView {
   }
 
   private void sellStocksAdapter() {
-    android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
-    builder.setMessage(getString(R.string.share_info_sell_description))
-        .setPositiveButton(getString(R.string.share_info_sell_ok), new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int id) {
-            presenter.sell();
-          }
-        })
-        .setNegativeButton(getString(R.string.share_info_sell_cancel), null).create().show();
+    SweetAlertDialog dialog = new SweetAlertDialog(this);
+    dialog.setTitleText(getString(R.string.share_info_sell))
+        .setContentText(getString(R.string.share_info_sell_description))
+        .showEditText(false, null)
+        .setConfirmText("Sell")
+        .setConfirmClickListener(sweetAlertDialog -> {
+          presenter.sell();
+          dialog.hide();
+        }).setCancelText(getString(R.string.alert_buy_cancel))
+        .setCancelClickListener(sweetAlertDialog -> dialog.hide()).show();
   }
 
   @OnClick(R.id.share_info_week) public void dayHistoryClicked() {
